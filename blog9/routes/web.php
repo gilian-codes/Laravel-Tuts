@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\ViewController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +22,15 @@ use App\Http\Controllers\Users;
 // });
 
 //about page i created 
-// Route::get('/about', function(){
-//     return view('about');
-// });
-
+Route::get('/about', function(){
+    return view('about');
+});
+ 
 //Another way to perform the above syntax of line 21 is to do
     // Route::view("about","about");
 
 //Route for contact page
-    // Route::view('contact', 'contact');
+    Route::view('contact', 'contact');
 
 //Pass data from routing
 // Route::get('/{name}', function ($name) {
@@ -46,10 +48,19 @@ use App\Http\Controllers\Users;
 //  Route::get("users",[Users::class,'index']); //users can be anything
 
   //to write anything for it to be displayed in the page do
-    Route::get("users/{user}",[Users::class,'index']);
+    // Route::get("users/{user}",[Users::class,'index']);
 
 Route::get('/', function () {
     return view('welcome');
  });
 
+//calling view from router
+// Route::get("/users/{name}", function($name){
+//     return view('users',['name' =>$name]);
+// });
+     //another way is
+        //Route::view("users","users");
+//calling the view from controller
+// Route::get("users/{name}",[ViewController::class,'loadView']);
 
+Route::get("users",[UserController::class,'viewLoad']); // an array
