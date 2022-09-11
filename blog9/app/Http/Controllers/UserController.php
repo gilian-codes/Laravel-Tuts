@@ -14,6 +14,8 @@ class UserController extends Controller
     // }
 
     function viewLoad(){
-        return view('users',['USER'=>['gilian']]);
+        // how to use the for each loop
+           $data=['peter','daniel','favour','leon'];
+           return view('users',['USERS'=>$data]);
     }
 }
