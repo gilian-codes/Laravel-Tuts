@@ -5,6 +5,7 @@ use App\Http\Controllers\Users;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\products;
+use App\Http\Controllers\UserAuth; //import the database class
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,5 +69,63 @@ use App\Http\Controllers\products;
 // Route::view('list', 'product');
 
 // html form
-Route::post("users",[UserController::class,'getData']);
+// Route::post("users",[UserController::class,'getData']);
+// Route::view("login", "users");
+
+// MIDDLEWARE
+//   global
+Route::view("users", "users");
+Route::view("home", "home");
+Route::view("noaccess", "noaccess");
+
+    // group
+    // to check the age of the users and home routes
+     Route::group(['middleware' =>['protectedPage']], function(){  //protectedPage is the middleware name
+            
+            Route::view('home', 'home');
+
+      });
+
+      //Route 
+      Route::view('home', 'home');
+      Route::view('users', 'users')->middleware('protectedPage');
+      Route::view('noaccess', 'noaccess');
+
+//database
+// Route::get('users',[UserController::class,'index']);
+// Route::view('users', 'users');
+
+// model
+// Route::get('users',[UserController::class,'getInfo']);
+
+//HTTP CLIENT
+//creating a path
+// Route::get('users',[UserController::class,'INFO']);
+
+//HTTP REQUEST
+Route::post("users",[UserController::class ,'testRequest']); 
 Route::view("login", "users");
+
+
+// session
+// Route::post("user", [UserAuth::class, 'userLogin']);
+// Route::view("login", "login");
+// Route::view("profile", "profile");
+
+// Route::get('/login', function(){
+//     if(session()->has('user')){
+//         return redirect('profile');
+//     }
+//     return view('login');
+// });
+
+
+// Route::get('/logout', function(){
+//     if(session()->has('user')){
+//         session()->pull('user');
+//     }
+//     return redirect('login');
+// });
+
+
+

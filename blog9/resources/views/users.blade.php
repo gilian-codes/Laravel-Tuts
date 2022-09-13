@@ -45,12 +45,60 @@
 </script> --}}
 
 {{-- HTML FORM --}}
-<h1>User Login</h1>
-<form action="users" method="POST">
+{{-- <h1>User Login</h1> --}}
+{{-- @if($errors->any())
+@foreach($errors->all() as $err)
+    <li>{{$err}}</li>
+@endforeach
+@endif --}}
+
+{{-- <form action="users" method="POST">
   @csrf
-  <input type="text" name="username" placeholder="enter user id"><br><br>
-  <input type="password" name="userpassword" placeholder="enter user password"><br><br>
-  <input type="email" name="email" placeholder="enter user email"> <br><br>
+  <input type="text" name="username" value="{{old("username")}}" placeholder="enter user id" ><br>
+     <span style="color: red"> @error('username'){{$message}}@enderror</span>
+  <br>
+
+  <input type="password" value="{{old("userpassword")}}" name="userpassword" placeholder="enter user password"><br>
+     <span style="color: red"> @error('userpassword'){{$message}}@enderror</span><br>
+
+  <input type="email" name="email" value="{{old("email")}}" placeholder="enter user email"> <br>
+     <span style="color: red"> @error('email'){{$message}}@enderror</span><br>
+
   <button type="submit">Login</button>
 </form>
- 
+  --}}
+
+  {{-- MIDDLEWARE --}}
+  <h1>User page</h1>
+
+  {{-- http client --}}
+  {{-- render the data in html table and pass it to the view --}}
+
+  <h1>User List</h1>
+  <table border="1">
+   <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Profile Photo</td>
+   </tr>
+
+  @foreach($collection as $item)
+  <tr>
+   <td>{{$item['id']}}</td>
+   <td>{{$item['first_name']}}</td>
+   <td>{{$item['email']}}</td>
+   <td><img src="{{$item['avatar']}}"></td>
+  </tr>
+  @endforeach
+
+  </table>
+
+  {{-- Http Request --}}
+  <h1>User Login</h1>
+  <form action="users" method="POST">
+   @csrf
+   <input type="text" name="user" placeholder="enter name"><br><br>
+   <input type="password" name="password" placeholder="enter password"><br><br>
+   <button type="submit">login</button>
+  </form>
