@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\products;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,9 @@ use App\Http\Controllers\UserController;
 // });
 
 //about page i created 
-Route::get('/about', function(){
-    return view('about');
-});
+// Route::get('/about', function(){
+//     return view('about');
+// });
  
 //Another way to perform the above syntax of line 21 is to do
     // Route::view("about","about");
@@ -50,9 +50,9 @@ Route::get('/about', function(){
   //to write anything for it to be displayed in the page do
     // Route::get("users/{user}",[Users::class,'index']);
 
-Route::get('/', function () {
-    return view('welcome');
- });
+// Route::get('/', function () {
+//     return view('welcome');
+//  });
 
 //calling view from router
 // Route::get("/users/{name}", function($name){
@@ -63,4 +63,10 @@ Route::get('/', function () {
 //calling the view from controller
 // Route::get("users/{name}",[ViewController::class,'loadView']);
 
-Route::get("users",[UserController::class,'viewLoad']); // an array
+// Route::get("users",[UserController::class,'viewLoad']); // an array
+
+// Route::view('list', 'product');
+
+// html form
+Route::post("users",[UserController::class,'getData']);
+Route::view("login", "users");

@@ -18,4 +18,13 @@ class UserController extends Controller
            $data=['peter','daniel','favour','leon'];
            return view('users',['USERS'=>$data]);
     }
+
+    // html form 
+    // function getData(){
+    //     return "Form data will be here";
+    // }
+    // get data from the html form to the laravel controller
+    function getData(Request $req){
+        return $req->input();
+    } 
 }
