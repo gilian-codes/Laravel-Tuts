@@ -69,11 +69,11 @@
   --}}
 
   {{-- MIDDLEWARE --}}
-  <h1>User page</h1>
+  {{-- <h1>User page</h1> --}}
 
   {{-- http client --}}
   {{-- render the data in html table and pass it to the view --}}
-
+{{-- 
   <h1>User List</h1>
   <table border="1">
    <tr>
@@ -92,13 +92,14 @@
   </tr>
   @endforeach
 
-  </table>
+  </table> --}}
 
   {{-- Http Request --}}
-  <h1>User Login</h1>
+  
+  {{-- <h1>User Login</h1>
   <form action="users" method="POST">
    @csrf
    <input type="text" name="user" placeholder="enter name"><br><br>
    <input type="password" name="password" placeholder="enter password"><br><br>
    <button type="submit">login</button>
-  </form>
+  </form> --}}

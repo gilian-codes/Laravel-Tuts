@@ -18,37 +18,37 @@ class UserController extends Controller
     //     return view('users',['USERS'=>['gilian','favour','daniel']]);
     // }
 
-    function viewLoad(){
-        // how to use the for each loop
-           $data=['peter','daniel','favour','leon'];
-           return view('users',['USERS'=>$data]);
-    }
+    // function viewLoad(){
+    //     // how to use the for each loop
+    //        $data=['peter','daniel','favour','leon'];
+    //        return view('users',['USERS'=>$data]);
+    // }
 
     // html form 
     // function getData(){
     //     return "Form data will be here";
     // }
     // get data from the html form to the laravel controller
-    public function getData(Request $req)
-{
-    $validated = $req->validate([
-        'username' => 'required|max:30',
-        'userpassword' => 'required|min:8',
-        'email' => 'required ',
-    ]);
-        return $req->input();
-    } 
+//     public function getData(Request $req)
+// {
+//     $validated = $req->validate([
+//         'username' => 'required|max:30',
+//         'userpassword' => 'required|min:8',
+//         'email' => 'required ',
+//     ]);
+//         return $req->input();
+//     } 
 
     // connecting to the database
-    function index(){
-        //    echo "from friend user controller";
-        return DB::select("select * from users ");
-    }
+    // function index(){
+    //     //    echo "from friend user controller";
+    //     return DB::select("select * from users ");
+    // }
 
     // model
-    function getInfo(){
-        return User::all();  //fetches all the data from the users table in the database
-    }
+    // function getInfo(){
+    //     return User::all();  //fetches all the data from the users table in the database
+    // }
 
     //http client
     // function INFO(){
