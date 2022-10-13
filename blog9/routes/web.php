@@ -19,7 +19,19 @@ use App\Http\Controllers\SaveController;
 // importing the members controller
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\App;
+// import query buider
+use App\Http\Controllers\QueryBuilder;
+// import aggregate
+use App\Http\Controllers\AggregateController;
+// import join
+use App\Http\Controllers\JoinController;
+use App\Http\Controllers\AccesorController;
+use App\Http\Controllers\MutatorController;
+use App\Http\Controllers\OnetooneMemberController;
+// use App\Http\Controllers\OnetooneCompanyController;
+
 use App\Models\Member;
+// use App\Http\Controllers\AggregateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -166,7 +178,7 @@ use App\Models\Member;
 // Route::get('list',[Members::class,'show']);
 
 // SAVE DATA IN THE DATABASE
-// Route::view("save", "save");
+Route::view("save", "save");
 // Route::post("save",[SaveController::class ,'addData']); 
 
 // DELETING FROM A DATABASE
@@ -174,7 +186,27 @@ Route::get('list',[MemberController::class,'list']);
     // making a delete route
     Route::get('delete/{id}',[MemberController::class,'delete']);
     Route::get('update/{id}',[MemberController::class,'updateData']);
-    Route::post('edit/',[MemberController::class,'update']);  //this update  differs
+    Route::post('update',[MemberController::class,'update']);  //this update  differs
+
+    // QUERY BUILDER
+    Route::get('query',[QueryBuilder::class ,'dboperations']);
+
+    // AGGREGATE
+    Route::get('agg',[AggregateController::class,'operation']);
+
+     // join
+     Route::get('join',[JoinController::class,'operation']);
+     
+     //ACCESSOR
+     Route::get('access',[AccesorController::class,'index']);
+
+      //MMUTATOR
+     Route::get('mutator',[MutatorController::class,'index']);
+
+     //One to one
+     Route::get('onetoone',[OnetooneMemberController::class,'relation']);
+
+
     
 
    

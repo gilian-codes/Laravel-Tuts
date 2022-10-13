@@ -30,12 +30,19 @@ class MemberController extends Controller
         return redirect('list');
     }
 
+    // UPDATE
     function updateData($id){
         $data=Member::find($id);
-        return view('update',['data' =>$data] );
+        return view('update',['data'=>$data]);
     }
 
     function update(Request $req){
-        return $req->input();
+        $data=Member::find($req->id);
+        // return $req->input();
+        $data->name=$req->name;
+        $data->email=$req->email;
+        $data->address=$req->address;
+        $data->save();
+        return redirect ('list');
     }
 }
